@@ -86,7 +86,7 @@ public class DbVideogameService implements InterfacciaVideogameService {
 	public String retriveVideogamePath(Videogame videogame, String latoImmagine) {
 		String produttore = (videogame.getConsole().getProduttore().getNome()).toLowerCase();
 		String console = (videogame.getConsole().getNome()).toLowerCase();
-		String vidoegameUrlPath = produttore + '-' + console +'['+videogame.getTitolo()+']'+latoImmagine;
+		String vidoegameUrlPath = produttore + '-' + console +'-'+'['+videogame.getTitolo()+']'+latoImmagine;
 		return vidoegameUrlPath;
 	}
 }
