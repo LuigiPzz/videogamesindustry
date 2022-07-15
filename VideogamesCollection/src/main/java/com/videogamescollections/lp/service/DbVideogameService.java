@@ -3,9 +3,12 @@ package com.videogamescollections.lp.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.catalina.valves.rewrite.InternalRewriteMap.LowerCase;
+import org.hibernate.query.criteria.internal.expression.function.LowerFunction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.fasterxml.jackson.databind.PropertyNamingStrategies.LowerCaseStrategy;
 import com.videogamescollections.lp.model.Videogame;
 import com.videogamescollections.lp.repository.IVideogameRepository;
 
@@ -78,6 +81,13 @@ public class DbVideogameService implements InterfacciaVideogameService {
 	public List<Videogame> searchVideogamesBySeries(String query) {
 		List<Videogame> videogamesSearchList= videogameRepository.searchVideogamesBySeries(query);
 		return videogamesSearchList;
+	}
+	
+	public String retriveVideogamePath(Videogame videogame, String latoImmagine) {
+		String produttore = (videogame.getConsole().getProduttore().getNome()).toLowerCase();
+		String console = (videogame.getConsole().getNome()).toLowerCase();
+		String vidoegameUrlPath = produttore + '-' + console +'['+videogame.getTitolo()+']'+latoImmagine;
+		return vidoegameUrlPath;
 	}
 }
 

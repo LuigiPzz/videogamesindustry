@@ -3,9 +3,12 @@ package com.videogamescollections.lp.model;
 import java.io.Serializable;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -23,8 +26,10 @@ public class Console implements Serializable {
 	@NotNull
 	private String nome;
 	
+	@OneToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "console")
 	@NotNull
-	private int produttore;
+	public Produttore produttore;
 	
 	private int anno;
 	
@@ -43,12 +48,12 @@ public class Console implements Serializable {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
-	public int getProduttore() {
+
+	public Produttore getProduttore() {
 		return produttore;
 	}
 
-	public void setProduttore(int produttore) {
+	public void setProduttore(Produttore produttore) {
 		this.produttore = produttore;
 	}
 
@@ -63,20 +68,16 @@ public class Console implements Serializable {
 	public Console() {
 		
 	}
-	
-	public Console(int id, String nome, int produttore, int anno) {
+
+	public Console(int id, String nome, Produttore produttore, int anno) {
 		this.id = id;
 		this.nome = nome;
 		this.produttore = produttore;
 		this.anno = anno;
 	}
 	
-//	@Override
-//	public int hashCode() {
-//		int hash = 7;
-//		hash = 41 * hash + (this.id != null ? this.id.hashCode() : 0);
-//		return hash;
-//	}
-//	
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	
 }

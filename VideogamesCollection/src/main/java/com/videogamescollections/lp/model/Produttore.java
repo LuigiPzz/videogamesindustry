@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Entity
-public class Serie implements Serializable {
+public class Produttore implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -39,11 +39,11 @@ public class Serie implements Serializable {
 		this.nome = nome;
 	}
 	
-	public Serie() {
+	public Produttore() {
 		
 	}
 	
-	public Serie(int id, String nome) {
+	public Produttore(int id, String nome) {
 		this.id = id;
 		this.nome = nome;
 	}

@@ -15,7 +15,6 @@ public class ConsoleService implements InterfacciaConsoleService {
 
 	public ConsoleService() {
 		list = new ArrayList<Console>();
-		list.add(new Console(1, "Peppapig", 1, 1));
 	}
 
 	@Override
