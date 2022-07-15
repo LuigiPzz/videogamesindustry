@@ -1,0 +1,178 @@
+<!doctype html>
+                        <html>
+                            <head>
+                                <meta charset='utf-8'>
+                                <meta name='viewport' content='width=device-width, initial-scale=1'>
+                                <title>Snippet - BBBootstrap</title>
+                                <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet'>
+                                <link href='https://use.fontawesome.com/releases/v5.7.2/css/all.css' rel='stylesheet'>
+                                <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+                                <style>::-webkit-scrollbar {
+                                  width: 8px;
+                                }
+                                /* Track */
+                                ::-webkit-scrollbar-track {
+                                  background: #f1f1f1; 
+                                }
+                                 
+                                /* Handle */
+                                ::-webkit-scrollbar-thumb {
+                                  background: #888; 
+                                }
+                                
+                                /* Handle on hover */
+                                ::-webkit-scrollbar-thumb:hover {
+                                  background: #555; 
+                                } body {
+    background: #ffc107;
+    font-family: Arial, Helvetica, sans-serif
+}
+
+.container {
+    background: #fff !important;
+    border: none;
+    border-radius: none
+}
+
+.abc {
+    padding-left: 40px
+}
+
+.pqr {
+    padding-right: 70px;
+    padding-top: 14px
+}
+
+
+.fa-star {
+    color: yellow
+}
+
+li {
+    list-style: none;
+    line-height: 50px;
+    color: #000
+}
+
+.col-md-2 {
+    padding-bottom: 20px;
+    font-weight: bold
+}
+
+.col-md-2 a {
+    text-decoration: none;
+    color: #000
+}
+
+
+
+@media screen and (max-width: 620px) {
+    .container {
+        width: 98%;
+        display: flex;
+        flex-flow: column;
+        text-align: center
+    }
+
+
+    .pqr {
+        text-align: center;
+        margin: 0 30px
+    }
+
+
+    .klo {
+        display: flex;
+        text-align: center;
+        margin: 0 auto;
+        margin-right: 40px
+    }
+}</style>
+				<script type="text/javascript">
+			$(document).ready(function() {
+
+				
+				// dynamic version
+				
+				$.ajax({
+					url : '/api/videogames',
+					method : 'get',
+					success : function(data) {
+						
+						$('.abc').html("");
+						$('.pqr').html("");						
+						$('.klo').html("");
+						
+						for(var i = data.length - 1; i >= 0; i--) {
+							
+							$('.abc').append('<h1>'+ data[i].titolo + '</h1>');
+							$('.pqr').append('<div class="col-md-3 text-right pqr">'+ data[i].serie + '</div>');
+							
+							
+														
+							$('.klo').append('<ul>'       
+							 					+ '<li>' + data[i].console.nome + '</li>'
+												+ '<li><b>Posseduto: </b>' + data[i].posseduto + '</li>'
+												+ '<li>' + data[i].console.nome + '</li>'
+												+ '<li>' + data[i].console.nome + '</li>'
+                								+ '</ul>');
+						}
+						
+						// init Masonry
+						var $grid = $('.abc').masonry({
+							itemSelector: '.abc',
+						});
+						
+						// layout Masonry after each image loads
+						$grid.imagesLoaded().progress( function() {
+						  $grid.masonry('layout');
+						});             		
+					}
+				});
+
+
+			});
+		</script>
+		
+</head>
+<body className='snippet-body'>
+<div class="container py-4 my-4 mx-auto d-flex flex-column">
+    <div class="header">
+        <div class="row r1">
+            <div class="col-md-9 abc">
+                <h1>Titolo</h1>
+            </div>
+            <div class="col-md-3 text-right pqr">Serie</div>
+        </div>
+    </div>
+    <div class="container-body mt-4">
+        <div class="row r3">
+            <div class="col-md-5 p-0 klo">
+                <ul>
+                    <li>Posseduto</li>
+                    <li>Xbox Serie X</li>
+                    <li>Tracciato</li>
+                    <li>.</li>
+                    <li>2022</li>                    
+                    <li>434 Industries</li>                    
+                    <li>Microsoft</li>
+                </ul>
+            </div>            				
+            <div class="col-md-7"> <img src="https://m.media-amazon.com/images/I/81RLS5ms2FL._AC_SX466_.jpg" width="90%" height="95%"> </div>
+
+				</div>
+        </div>
+    </div>
+</div>
+                                <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
+                                <script type='text/javascript' src='#'></script>
+                                <script type='text/javascript' src='#'></script>
+                                <script type='text/javascript' src='#'></script>
+                                <script type='text/javascript'>#</script>
+                                <script type='text/javascript'>var myLink = document.querySelector('a[href="#"]');
+                                myLink.addEventListener('click', function(e) {
+                                  e.preventDefault();
+                                });</script>
+                            
+                                </body>
+                            </html>

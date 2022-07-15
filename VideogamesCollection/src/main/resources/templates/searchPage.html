@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>MyPhotos</title>
+
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script>
+		
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.2.2/masonry.pkgd.min.js" integrity="sha512-JRlcvSZAXT8+5SQQAvklXGJuxXTouyq8oIMaYERZQasB8SBDHZaUbeASsJWpk0UUrf89DP3/aefPPrlMR1h1yQ==" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha512-S5PZ9GxJZO16tT9r3WJp/Safn31eu8uWrzglMahDT4dsmgqWonRY9grk3j+3tfuPr9WJNsfooOR7Gi7HL5W2jw==" crossorigin="anonymous"></script>
+
+		<link rel="stylesheet" href="./css/style.css">
+
+		<script type="text/javascript">
+			$(document).ready(function f(query)  {
+
+				
+				// dynamic version
+				
+				$.ajax({
+					url : '/search?',
+					method : 'get',
+					data: { "query": 'pi'} ,
+					success : function f(data) {
+						
+						$('.grid').html("");
+						
+						for(var i = data.length - 1; i >= 0; i--) {
+							
+							$('.grid').append('<ul>'       
+							 					+ '<li>' + data[i].console.nome + '</li>'
+												+ '<li><b>Posseduto: </b>' + data[i].titolo + '</li>'
+                								+ '</ul>');
+						}
+						
+						// init Masonry
+						var $grid = $('.grid').masonry({
+							itemSelector: '.grid-item'
+						});
+						
+						// layout Masonry after each image loads
+						$grid.imagesLoaded().progress( function() {
+						  $grid.masonry('layout');
+						});             		
+					}
+				});
+				
+/*
+				// static version
+				// init Masonry
+				var $grid = $('.grid').masonry({
+					itemSelector : '.grid-item'
+				});
+
+				// layout Masonry after each image loads
+				$grid.imagesLoaded().progress(function() {
+					$grid.masonry('layout');
+				});
+*/
+			});
+		</script>
+	</head>
+	<body>
+
+		<header>
+				<form action="/searchPage?">
+				  <label for="query">First name:</label><br>
+				  <input type="text" id="query" name="query" value="pi"><br>
+				  <input  type="submit" value="Submit">
+				  <button onclick="f(query)" type="submit">Click Me!</button>
+				</form> 
+
+			<div>MyPhotos</div>
+			<div>
+				<a href="./admin">ADMIN</a>
+			</div>
+
+		</header>
+
+		<main>
+
+			<div class="grid" style="position: relative; height: 2506.98px;">
+				<div class="grid-item">
+					<img
+						src="./img/27.png"
+						alt="" srcset="">
+				</div>
+				<div class="grid-item">
+					<img
+						src="./img/26.png"
+						alt="" srcset="">
+				</div>
+				<div class="grid-item">
+					<img
+						src="./img/25.png"
+						alt="" srcset="">
+				</div>
+
+
+	
+			</div>
+
+		</main>
+
+
+	</body>
+</html>
