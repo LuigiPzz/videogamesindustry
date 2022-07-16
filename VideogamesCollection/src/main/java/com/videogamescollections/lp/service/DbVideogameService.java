@@ -9,8 +9,12 @@ import org.springframework.stereotype.Service;
 import com.videogamescollections.lp.model.Videogame;
 import com.videogamescollections.lp.repository.IVideogameRepository;
 
+import ch.qos.logback.classic.Logger;
+
 @Service("mainVideogameService")
 public class DbVideogameService implements InterfacciaVideogameService {
+	
+	private Logger log = null;
 
 	@Autowired
 	private IVideogameRepository videogameRepository;
@@ -28,13 +32,13 @@ public class DbVideogameService implements InterfacciaVideogameService {
 	}
 	
 	@Override
-	public Videogame create(Videogame Videogame) {
+	public Videogame create(Videogame videogame) {
 		
-		return videogameRepository.save(Videogame);
+		return videogameRepository.save(videogame);
 	}
 	
 	@Override
-	public Optional<Videogame> update(int id, Videogame Videogame) {
+	public Optional<Videogame> update(int id, Videogame videogame) {
 		
 		Optional<Videogame> foundVideogame = videogameRepository.findById(id);
 		
@@ -43,10 +47,10 @@ public class DbVideogameService implements InterfacciaVideogameService {
 			return Optional.empty();
 		}
 		
-		foundVideogame.get().setTitolo(Videogame.getTitolo());
-		foundVideogame.get().setPosseduto(Videogame.getPosseduto());
-		foundVideogame.get().setConsole(Videogame.console);
-		foundVideogame.get().setSerie(Videogame.getSerie());
+		foundVideogame.get().setTitolo(videogame.getTitolo());
+		foundVideogame.get().setPosseduto(videogame.getPosseduto());
+		foundVideogame.get().setConsole(videogame.console);
+		foundVideogame.get().setSerie(videogame.getSerie());
 		
 		videogameRepository.save(foundVideogame.get());
 		
@@ -84,7 +88,8 @@ public class DbVideogameService implements InterfacciaVideogameService {
 		String produttore = (videogame.getConsole().getProduttore().getNome()).toLowerCase();
 		String console = (videogame.getConsole().getNome()).toLowerCase();
 		String vidoegameUrlPath = produttore + '-' + console +'-'+'['+videogame.getTitolo()+']'+latoImmagine+".jpeg";
-		System.out.print(vidoegameUrlPath);
+		//System.out.print(vidoegameUrlPath);
+		log.debug("URL Videogame Path: " + vidoegameUrlPath);
 		return vidoegameUrlPath;
 	}
 }

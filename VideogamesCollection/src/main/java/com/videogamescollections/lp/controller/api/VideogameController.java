@@ -7,9 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
@@ -28,33 +27,26 @@ public class VideogameController {
 		
 	}
 	
-	@RequestMapping(value = "/api/videogames", 
-			method=RequestMethod.GET)
+	@GetMapping(value = "/api/videogames")
 	public Iterable<Videogame> getAll(){
 		return videogameService.getAll();
 	}
 	
-	@RequestMapping(value = "/api/videogames/{id}",
-			method=RequestMethod.GET)
+	@GetMapping(value = "/api/videogames/{id}")
 	public Videogame getById(@PathVariable int id) {
-		
 		Optional<Videogame> videogame = videogameService.getById(id);
-		
 		if (videogame.isEmpty()) {
-			
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "videogame not found");
 		}
 		return videogame.get();
 	}
 	
-	@RequestMapping(value = "/search",
-			method=RequestMethod.GET)
+	@GetMapping(value = "/search")
 	public ResponseEntity<List<Videogame>> searchVideogamesByTitle(@RequestParam("query") String query){
 		return ResponseEntity.ok(videogameService.searchVideogamesByTitle(query));
 	}
 	
-	@RequestMapping(value = "/search",
-			method=RequestMethod.GET)
+	@GetMapping(value = "/search")
 	public ResponseEntity<List<Videogame>> searchVideogamesBySeries(@RequestParam("query") String query){
 		return ResponseEntity.ok(videogameService.searchVideogamesBySeries(query));
 	}

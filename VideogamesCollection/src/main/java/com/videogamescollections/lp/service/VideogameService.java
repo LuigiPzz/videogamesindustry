@@ -2,6 +2,7 @@ package com.videogamescollections.lp.service;
 
 import java.util.Optional;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
@@ -60,14 +61,12 @@ public class VideogameService implements InterfacciaVideogameService {
 
 	@Override
 	public List<Videogame> searchVideogamesByTitle(String query) {
-		// TODO Auto-generated method stub
-		return null;
+		return Collections.emptyList();
 	}
 
 	@Override
 	public List<Videogame> searchVideogamesBySeries(String query) {
-		// TODO Auto-generated method stub
-		return null;
+		return Collections.emptyList();
 	}
 
 	

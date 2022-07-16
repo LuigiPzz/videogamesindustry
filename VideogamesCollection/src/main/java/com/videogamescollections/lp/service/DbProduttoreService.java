@@ -28,9 +28,8 @@ public class DbProduttoreService implements InterfacciaProduttoreService {
 	}
 	
 	@Override
-	public Produttore create(Produttore Produttore) {
-		
-		return produttoreRepository.save(Produttore);
+	public Produttore create(Produttore produttore) {
+		return produttoreRepository.save(produttore);
 	}
 	
 	@Override
