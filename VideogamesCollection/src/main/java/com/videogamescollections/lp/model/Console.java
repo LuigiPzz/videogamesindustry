@@ -66,7 +66,7 @@ public class Console implements Serializable {
 	}
 
 	public Console() {
-		
+		super();
 	}
 
 	public Console(int id, String nome, Produttore produttore, int anno) {

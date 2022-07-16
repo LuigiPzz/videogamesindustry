@@ -34,7 +34,7 @@ public class Photo {
 	}
 	
 	public Photo() {
-		
+		super();
 	}
 	
 	public Photo(int id, String url) {

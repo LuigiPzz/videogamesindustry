@@ -40,7 +40,7 @@ public class Produttore implements Serializable {
 	}
 	
 	public Produttore() {
-		
+		super();
 	}
 	
 	public Produttore(int id, String nome) {
@@ -48,5 +48,7 @@ public class Produttore implements Serializable {
 		this.nome = nome;
 	}
 
-	
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 }

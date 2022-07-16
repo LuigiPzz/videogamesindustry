@@ -79,7 +79,7 @@ public class Videogame implements Serializable {
 	}
 
 	public Videogame() {
-		
+		super();
 	}
 	
 	public Videogame(int id, String titolo, Boolean posseduto, Console console, Serie serie) {
@@ -90,4 +90,7 @@ public class Videogame implements Serializable {
 		this.serie = serie;
 	}
 	
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 }

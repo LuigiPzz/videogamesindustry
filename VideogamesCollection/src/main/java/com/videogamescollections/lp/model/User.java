@@ -86,4 +86,23 @@ public class User implements Serializable{
 		this.email = email;
 	}
 
+	public User() {
+		super();
+	}
+
+	public User(int id, @NotNull String nome, @NotNull String cognome,
+			@NotNull @Length(min = 5, max = 30) @UniqueElements String username, @NotNull String password,
+			@Email @NotNull @Length(min = 10, max = 150) String email) {
+		super();
+		this.id = id;
+		this.nome = nome;
+		this.cognome = cognome;
+		this.username = username;
+		this.password = password;
+		this.email = email;
+	}
+	
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 }

@@ -40,7 +40,7 @@ public class Serie implements Serializable {
 	}
 	
 	public Serie() {
-		
+		super();
 	}
 	
 	public Serie(int id, String nome) {
@@ -48,5 +48,7 @@ public class Serie implements Serializable {
 		this.nome = nome;
 	}
 
-	
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 }
