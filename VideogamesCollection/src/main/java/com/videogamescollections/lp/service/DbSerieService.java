@@ -27,7 +27,6 @@ public class DbSerieService implements InterfacciaSerieService {
 
 	@Override
 	public Serie create(Serie serie) {
-
 		return serieRepository.save(serie);
 	}
 

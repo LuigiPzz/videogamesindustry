@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import com.videogamescollections.lp.model.User;
 import com.videogamescollections.lp.repository.IUserRepository;
 
-@Service("mainConsoleService")
+@Service("mainUserService")
 public class DbUserService implements InterfacciaUserService {
 
 	@Autowired

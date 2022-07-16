@@ -16,6 +16,6 @@ public interface IVideogameRepository extends CrudRepository<Videogame, Integer>
 	List<Videogame> searchVideogamesByTitle(String query);
 	
 	@Query("Select vg from Videogame vg where " +
-			"vg.serie.titolo like concat('%',:query, '%')" )
+			"vg.serie.nome like concat('%',:query, '%')" )
 	List<Videogame> searchVideogamesBySeries(String query);
 }

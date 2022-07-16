@@ -46,7 +46,7 @@ public class VideogameController {
 		return ResponseEntity.ok(videogameService.searchVideogamesByTitle(query));
 	}
 	
-	@GetMapping(value = "/search")
+	@GetMapping(value = "/searchSeries")
 	public ResponseEntity<List<Videogame>> searchVideogamesBySeries(@RequestParam("query") String query){
 		return ResponseEntity.ok(videogameService.searchVideogamesBySeries(query));
 	}
