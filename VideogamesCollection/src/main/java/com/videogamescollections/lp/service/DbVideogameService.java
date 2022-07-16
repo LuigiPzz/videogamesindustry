@@ -3,12 +3,9 @@ package com.videogamescollections.lp.service;
 import java.util.List;
 import java.util.Optional;
 
-import org.apache.catalina.valves.rewrite.InternalRewriteMap.LowerCase;
-import org.hibernate.query.criteria.internal.expression.function.LowerFunction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.fasterxml.jackson.databind.PropertyNamingStrategies.LowerCaseStrategy;
 import com.videogamescollections.lp.model.Videogame;
 import com.videogamescollections.lp.repository.IVideogameRepository;
 
@@ -86,7 +83,8 @@ public class DbVideogameService implements InterfacciaVideogameService {
 	public String retriveVideogamePath(Videogame videogame, String latoImmagine) {
 		String produttore = (videogame.getConsole().getProduttore().getNome()).toLowerCase();
 		String console = (videogame.getConsole().getNome()).toLowerCase();
-		String vidoegameUrlPath = produttore + '-' + console +'-'+'['+videogame.getTitolo()+']'+latoImmagine;
+		String vidoegameUrlPath = produttore + '-' + console +'-'+'['+videogame.getTitolo()+']'+latoImmagine+".jpeg";
+		System.out.print(vidoegameUrlPath);
 		return vidoegameUrlPath;
 	}
 }

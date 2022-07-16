@@ -28,9 +28,9 @@ public class DbConsoleService implements InterfacciaConsoleService {
 	}
 	
 	@Override
-	public Console create(Console Console) {
+	public Console create(Console console) {
 		
-		return videogameRepository.save(Console);
+		return videogameRepository.save(console);
 	}
 	
 	@Override
