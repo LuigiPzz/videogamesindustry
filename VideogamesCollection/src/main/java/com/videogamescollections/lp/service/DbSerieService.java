@@ -32,11 +32,8 @@ public class DbSerieService implements InterfacciaSerieService {
 
 	@Override
 	public Optional<Serie> update(int id, Serie serie) {
-
 		Optional<Serie> foundSerie = serieRepository.findById(id);
-
 		if (foundSerie.isEmpty()) {
-
 			return Optional.empty();
 		}
 		foundSerie.get().setNome(serie.getNome());
@@ -47,7 +44,6 @@ public class DbSerieService implements InterfacciaSerieService {
 
 	@Override
 	public Boolean delete(int id) {
-
 		Optional<Serie> foundSerie = serieRepository.findById(id);
 		if (foundSerie.isEmpty()) {
 			return false;

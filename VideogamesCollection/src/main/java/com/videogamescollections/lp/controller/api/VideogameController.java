@@ -41,12 +41,12 @@ public class VideogameController {
 		return videogame.get();
 	}
 	
-	@GetMapping(value = "/search")
+	@GetMapping(value = "/api/search")
 	public ResponseEntity<List<Videogame>> searchVideogamesByTitle(@RequestParam("query") String query){
 		return ResponseEntity.ok(videogameService.searchVideogamesByTitle(query));
 	}
 	
-	@GetMapping(value = "/searchSeries")
+	@GetMapping(value = "/api/searchSeries")
 	public ResponseEntity<List<Videogame>> searchVideogamesBySeries(@RequestParam("query") String query){
 		return ResponseEntity.ok(videogameService.searchVideogamesBySeries(query));
 	}
