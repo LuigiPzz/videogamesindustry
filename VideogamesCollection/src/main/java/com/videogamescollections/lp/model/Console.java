@@ -27,7 +27,7 @@ public class Console implements Serializable {
 	private String nome;
 	
 	@OneToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "console")
+	@JoinColumn(name = "produttore")
 	@NotNull
 	public Produttore produttore;
 	
