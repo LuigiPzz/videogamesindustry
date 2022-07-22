@@ -73,7 +73,7 @@ public class Console implements Serializable {
 		this.id = id;
 		this.nome = nome;
 		this.produttore = produttore;
-		this.anno = anno;
+		setAnno(anno);
 	}
 	
 	public static long getSerialversionuid() {

@@ -13,30 +13,31 @@ import com.videogamescollections.lp.repository.IConsoleRepository;
 public class DbConsoleService implements InterfacciaConsoleService {
 
 	@Autowired
-	private IConsoleRepository videogameRepository;
+	private IConsoleRepository consoleRepository;
 	
 	@Override
 	public Iterable<Console> getAll() {
 
-		return videogameRepository.findAll();
+		//return consoleRepository.findAllByOrderByNomeAsc();
+		return consoleRepository.findAll();
 	}
 	
 	@Override
 	public Optional<Console> getById(int id) {
 		
-		return videogameRepository.findById(id);
+		return consoleRepository.findById(id);
 	}
 	
 	@Override
 	public Console create(Console console) {
 		
-		return videogameRepository.save(console);
+		return consoleRepository.save(console);
 	}
 	
 	@Override
 	public Optional<Console> update(int id, Console console) {
 		
-		Optional<Console> foundConsole = videogameRepository.findById(id);
+		Optional<Console> foundConsole = consoleRepository.findById(id);
 		
 		if (foundConsole.isEmpty()) {
 			
@@ -45,7 +46,7 @@ public class DbConsoleService implements InterfacciaConsoleService {
 		foundConsole.get().setNome(console.getNome());	
 		foundConsole.get().setProduttore(console.getProduttore());
 		foundConsole.get().setAnno(console.getAnno());
-		videogameRepository.save(foundConsole.get());
+		consoleRepository.save(foundConsole.get());
 		
 		return foundConsole;
 	}
@@ -53,14 +54,14 @@ public class DbConsoleService implements InterfacciaConsoleService {
 	@Override
 	public Boolean delete(int id) {
 		
-		Optional<Console> foundConsole = videogameRepository.findById(id);
+		Optional<Console> foundConsole = consoleRepository.findById(id);
 		
 		if (foundConsole.isEmpty()) {
 			
 			return false;
 		}
 		
-		videogameRepository.delete(foundConsole.get());
+		consoleRepository.delete(foundConsole.get());
 		
 		return true;
 	}

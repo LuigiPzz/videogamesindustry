@@ -17,6 +17,7 @@ import org.springframework.web.server.ResponseStatusException;
 import com.videogamescollections.lp.model.Videogame;
 import com.videogamescollections.lp.service.InterfacciaVideogameService;
 
+@CrossOrigin
 @RestController
 public class VideogameController {
 	
@@ -28,7 +29,7 @@ public class VideogameController {
 		
 	}
 	
-	@CrossOrigin
+
 	@GetMapping(value = "/api/videogames")
 	public Iterable<Videogame> getAll(){
 		return videogameService.getAll();
