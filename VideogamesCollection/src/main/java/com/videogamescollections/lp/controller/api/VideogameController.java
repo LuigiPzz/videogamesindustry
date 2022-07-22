@@ -45,7 +45,7 @@ public class VideogameController {
 	}
 	
 	@GetMapping(value = "/api/search")
-	public ResponseEntity<List<Videogame>> searchVideogamesByTitle(@RequestParam("query") String query){
+	public ResponseEntity<List<Videogame>> searchVideogamesByTitle(@RequestParam(value="query",required=false) String query){
 		return ResponseEntity.ok(videogameService.searchVideogamesByTitle(query));
 	}
 	
