@@ -20,4 +20,11 @@ public interface InterfacciaVideogameService {
 	public List<Videogame> searchVideogamesByTitle(String query);
 
 	public List<Videogame> searchVideogamesBySeries(String query);
+	
+	
+	//public List<Videogame> searchAllGameInUserCollection(int userid, String titolo);
+	public List<Videogame> searchAllGameInUserCollection(String query);
+	
+	public List<Videogame>getLastVideogameAdded(int limit);
+
 }

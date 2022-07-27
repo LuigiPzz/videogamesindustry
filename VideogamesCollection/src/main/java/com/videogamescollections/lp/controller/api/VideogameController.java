@@ -35,6 +35,14 @@ public class VideogameController {
 		return videogameService.getAll();
 	}
 	
+	
+	@GetMapping(value = "/api/videogamesCollection")
+	public ResponseEntity<List<Videogame>> getAllGameInUserCollection(
+			@RequestParam(value="userid",required=false) int userid, 
+			@RequestParam(value="titolo",required=false) String query){
+		return ResponseEntity.ok(videogameService.searchAllGameInUserCollection(query));
+	}
+	
 	@GetMapping(value = "/api/videogames/{id}")
 	public Videogame getById(@PathVariable int id) {
 		Optional<Videogame> videogame = videogameService.getById(id);
@@ -52,5 +60,10 @@ public class VideogameController {
 	@GetMapping(value = "/api/searchSeries")
 	public ResponseEntity<List<Videogame>> searchVideogamesBySeries(@RequestParam("query") String query){
 		return ResponseEntity.ok(videogameService.searchVideogamesBySeries(query));
+	}
+	
+	@GetMapping(value = "/api/lastVideogamesAdded")
+	public Iterable<Videogame> getLastVideogameAdded(@RequestParam("limit") int limit){
+		return videogameService.getLastVideogameAdded(limit);
 	}
 }

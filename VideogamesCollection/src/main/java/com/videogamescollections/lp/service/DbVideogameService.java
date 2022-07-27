@@ -92,5 +92,17 @@ public class DbVideogameService implements InterfacciaVideogameService {
 		log.debug("URL Videogame Path: " + vidoegameUrlPath);
 		return vidoegameUrlPath;
 	}
+
+	@Override
+	public List<Videogame> searchAllGameInUserCollection( String query) {
+		List<Videogame> videogamesSearchList= videogameRepository.searchAllGameInUserCollection(query);
+		return videogamesSearchList;
+	}
+
+	@Override
+	public List<Videogame> getLastVideogameAdded(int limit) {
+		List<Videogame> videogamesSearchList= videogameRepository.getLastVideogamesAdded(limit);
+		return videogamesSearchList;
+	}
 }
 

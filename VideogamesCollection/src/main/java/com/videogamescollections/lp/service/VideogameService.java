@@ -69,6 +69,18 @@ public class VideogameService implements InterfacciaVideogameService {
 		return Collections.emptyList();
 	}
 
+	@Override
+	public List<Videogame> searchAllGameInUserCollection(String query) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Videogame> getLastVideogameAdded(int limit) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 
 }
