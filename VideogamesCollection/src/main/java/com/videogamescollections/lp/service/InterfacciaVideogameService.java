@@ -27,4 +27,6 @@ public interface InterfacciaVideogameService {
 	
 	public List<Videogame>getLastVideogameAdded(int limit);
 
+	public List<Videogame> getVideogamesBySerie(int id);
+
 }

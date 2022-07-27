@@ -81,6 +81,12 @@ public class VideogameService implements InterfacciaVideogameService {
 		return null;
 	}
 
+	@Override
+	public List<Videogame> getVideogamesBySerie(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 
 }

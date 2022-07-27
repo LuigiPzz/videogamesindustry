@@ -21,13 +21,11 @@ public class DbVideogameService implements InterfacciaVideogameService {
 	
 	@Override
 	public Iterable<Videogame> getAll() {
-
 		return videogameRepository.findAll();
 	}
 	
 	@Override
 	public Optional<Videogame> getById(int id) {
-		
 		return videogameRepository.findById(id);
 	}
 	
@@ -103,6 +101,11 @@ public class DbVideogameService implements InterfacciaVideogameService {
 	public List<Videogame> getLastVideogameAdded(int limit) {
 		List<Videogame> videogamesSearchList= videogameRepository.getLastVideogamesAdded(limit);
 		return videogamesSearchList;
+	}
+
+	@Override
+	public List<Videogame> getVideogamesBySerie(int id) {
+		return videogameRepository.getVideogamesBySerie(id);
 	}
 }
 

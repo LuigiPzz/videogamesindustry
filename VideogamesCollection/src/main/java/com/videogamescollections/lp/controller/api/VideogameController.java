@@ -17,6 +17,8 @@ import org.springframework.web.server.ResponseStatusException;
 import com.videogamescollections.lp.model.Videogame;
 import com.videogamescollections.lp.service.InterfacciaVideogameService;
 
+import io.swagger.v3.oas.annotations.Operation;
+
 @CrossOrigin
 @RestController
 public class VideogameController {
@@ -28,6 +30,38 @@ public class VideogameController {
 	public VideogameController() {
 		
 	}
+	
+	@GetMapping(value = "/api/videogames/{id}")
+	@Operation(summary = "Restituisce il singolo oggetto Videogame",
+			description = "Utilizzato in: • videogame-detail.component")
+				
+	public Videogame getById(@PathVariable int id) {
+		Optional<Videogame> videogame = videogameService.getById(id);
+		if (videogame.isEmpty()) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "videogame not found");
+		}
+		return videogame.get();
+	}
+	
+	@GetMapping(value = "/api/videogames/serie/{id}")
+	@Operation(summary = "Restituisce la lista di oggetto Videogame relativi ad una serie",
+			description = "Utilizzato in: • ")
+	public List<Videogame> getVideogamesBySerie(@PathVariable int id) {
+		List<Videogame> videogame = videogameService.getVideogamesBySerie(id);
+		if (videogame.isEmpty()) {
+			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Non ci sono altri videogame per la serie");
+		}
+		return videogame;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 
 	@GetMapping(value = "/api/videogames")
@@ -43,14 +77,7 @@ public class VideogameController {
 		return ResponseEntity.ok(videogameService.searchAllGameInUserCollection(query));
 	}
 	
-	@GetMapping(value = "/api/videogames/{id}")
-	public Videogame getById(@PathVariable int id) {
-		Optional<Videogame> videogame = videogameService.getById(id);
-		if (videogame.isEmpty()) {
-			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "videogame not found");
-		}
-		return videogame.get();
-	}
+
 	
 	@GetMapping(value = "/api/search")
 	public ResponseEntity<List<Videogame>> searchVideogamesByTitle(@RequestParam(value="query",required=false) String query){

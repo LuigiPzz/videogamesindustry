@@ -40,4 +40,8 @@ public interface IVideogameRepository extends CrudRepository<Videogame, Integer>
 	
 	@Query(value="Select * from videogame vg order by id desc limit :limit", nativeQuery = true) 
 	List<Videogame> getLastVideogamesAdded(int limit);
+
+	@Query(value="Select * from videogame vg where " +
+			"vg.serie = :id" , nativeQuery = true)
+	List<Videogame> getVideogamesBySerie(int id);
 }
