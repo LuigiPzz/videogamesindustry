@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
@@ -19,8 +20,9 @@ import com.videogamescollections.lp.service.InterfacciaVideogameService;
 
 import io.swagger.v3.oas.annotations.Operation;
 
-@CrossOrigin
+@CrossOrigin //TODO
 @RestController
+@RequestMapping("/api/videogames")
 public class VideogameController {
 	
 	@Autowired
@@ -31,11 +33,16 @@ public class VideogameController {
 		
 	}
 	
-	@GetMapping(value = "/api/videogames/{id}")
+	@GetMapping()
+	public Iterable<Videogame> getAll(){
+		return videogameService.getAll();
+	}
+	
+	@GetMapping(value = "/{id}")
 	@Operation(summary = "Restituisce il singolo oggetto Videogame",
 			description = "Utilizzato in: • videogame-detail.component")
 				
-	public Videogame getById(@PathVariable int id) {
+	public Videogame getById(@PathVariable ("id") int id) {
 		Optional<Videogame> videogame = videogameService.getById(id);
 		if (videogame.isEmpty()) {
 			throw new ResponseStatusException(HttpStatus.NOT_FOUND, "videogame not found");
@@ -43,7 +50,7 @@ public class VideogameController {
 		return videogame.get();
 	}
 	
-	@GetMapping(value = "/api/videogames/serie/{id}")
+	@GetMapping(value = "/serie/{id}")
 	@Operation(summary = "Restituisce la lista di oggetto Videogame relativi ad una serie",
 			description = "Utilizzato in: • ")
 	public List<Videogame> getVideogamesBySerie(@PathVariable int id) {
@@ -64,10 +71,7 @@ public class VideogameController {
 	
 	
 
-	@GetMapping(value = "/api/videogames")
-	public Iterable<Videogame> getAll(){
-		return videogameService.getAll();
-	}
+
 	
 	
 	@GetMapping(value = "/api/videogamesCollection")
