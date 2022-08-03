@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
@@ -33,17 +34,17 @@ public class Console implements Serializable {
 	@NotNull
 	private String nome;
 	
+	@JsonManagedReference
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "produttore")
-	@JsonManagedReference
 	@NotNull
 	public Produttore produttore;
 	
 	private int anno;
 	
-	@OneToMany(targetEntity = Videogame.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = false)
+	@JsonBackReference
+	@OneToMany(targetEntity = Videogame.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name="console")
-	@JsonManagedReference
 	private List<Videogame> videogames;
 	
 	

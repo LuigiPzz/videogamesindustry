@@ -69,10 +69,10 @@ public class DbVideogameService implements InterfacciaVideogameService {
 		
 		return true;
 	}
-
+	
 	@Override
-	public List<Videogame> searchVideogamesByTitle(String query) {
-		List<Videogame> videogamesSearchList= videogameRepository.searchVideogamesByTitle(query);
+	public List<Videogame> findByTitoloContaining(String titolo) {
+		List<Videogame> videogamesSearchList= videogameRepository.findByTitoloContaining(titolo);
 		return videogamesSearchList;
 	}
 
@@ -107,5 +107,7 @@ public class DbVideogameService implements InterfacciaVideogameService {
 	public List<Videogame> getVideogamesBySerie(int id) {
 		return videogameRepository.getVideogamesBySerie(id);
 	}
+
+
 }
 

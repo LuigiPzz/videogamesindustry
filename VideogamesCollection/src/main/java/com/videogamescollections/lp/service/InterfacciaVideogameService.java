@@ -17,7 +17,7 @@ public interface InterfacciaVideogameService {
 
 	public Boolean delete(int id);
 
-	public List<Videogame> searchVideogamesByTitle(String query);
+	public List<Videogame> findByTitoloContaining(String titolo);
 
 	public List<Videogame> searchVideogamesBySeries(String query);
 	

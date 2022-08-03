@@ -35,13 +35,13 @@ public class Videogame implements Serializable {
 	@NotNull
 	private Boolean posseduto;
 	
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@EqualsAndHashCode.Exclude
-	@JsonBackReference
+	@JsonManagedReference
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "console")
 	public Console console;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@JsonManagedReference
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "serie")
 	public Serie serie;
 

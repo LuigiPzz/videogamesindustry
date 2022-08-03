@@ -50,6 +50,12 @@ public class VideogameController {
 		return videogame.get();
 	}
 	
+	@GetMapping(value = "/findByTitolo")
+	@Operation(description = "Spring JPA")
+	public ResponseEntity<List<Videogame>> findByTitoloLike(@RequestParam(value="titolo",required=false) String titolo){
+		return ResponseEntity.ok(videogameService.findByTitoloContaining(titolo));
+	}
+	
 	@GetMapping(value = "/serie/{id}")
 	@Operation(summary = "Restituisce la lista di oggetto Videogame relativi ad una serie",
 			description = "Utilizzato in: • ")
@@ -80,20 +86,16 @@ public class VideogameController {
 			@RequestParam(value="titolo",required=false) String query){
 		return ResponseEntity.ok(videogameService.searchAllGameInUserCollection(query));
 	}
-	
 
 	
-	@GetMapping(value = "/api/search")
-	public ResponseEntity<List<Videogame>> searchVideogamesByTitle(@RequestParam(value="query",required=false) String query){
-		return ResponseEntity.ok(videogameService.searchVideogamesByTitle(query));
-	}
+
 	
 	@GetMapping(value = "/api/searchSeries")
 	public ResponseEntity<List<Videogame>> searchVideogamesBySeries(@RequestParam("query") String query){
 		return ResponseEntity.ok(videogameService.searchVideogamesBySeries(query));
 	}
 	
-	@GetMapping(value = "/api/lastVideogamesAdded")
+	@GetMapping(value = "/lastVideogamesAdded")
 	public Iterable<Videogame> getLastVideogameAdded(@RequestParam("limit") int limit){
 		return videogameService.getLastVideogameAdded(limit);
 	}

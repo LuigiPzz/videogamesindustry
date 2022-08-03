@@ -8,6 +8,7 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.videogamescollections.lp.model.Videogame;
@@ -15,9 +16,7 @@ import com.videogamescollections.lp.model.Videogame;
 @Repository
 public interface IVideogameRepository extends CrudRepository<Videogame, Integer> {
 
-	@Query("Select vg from Videogame vg where " +
-			"vg.titolo like concat('%',:query, '%')" )
-	List<Videogame> searchVideogamesByTitle(String query);
+	List<Videogame> findByTitoloContaining(String titolo);
 	
 	@Query("Select vg from Videogame vg where " +
 			"vg.serie.nome like concat('%',:query, '%')" )
@@ -39,7 +38,7 @@ public interface IVideogameRepository extends CrudRepository<Videogame, Integer>
 	List<Videogame> searchAllGameInUserCollection(String query);
 	
 	@Query(value="Select * from videogame vg order by id desc limit :limit", nativeQuery = true) 
-	List<Videogame> getLastVideogamesAdded(int limit);
+	List<Videogame> getLastVideogamesAdded(@Param("limit") int limit);
 
 	@Query(value="Select * from videogame vg where " +
 			"vg.serie = :id" , nativeQuery = true)

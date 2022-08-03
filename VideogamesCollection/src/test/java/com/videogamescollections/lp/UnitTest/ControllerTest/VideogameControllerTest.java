@@ -1,4 +1,4 @@
-package com.videogamescollections.lp;
+package com.videogamescollections.lp.UnitTest.ControllerTest;
 
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -16,9 +16,11 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
+import com.videogamescollections.lp.VideogamesCollectionApplication;
+
 @SpringBootTest
 @ContextConfiguration(classes = VideogamesCollectionApplication.class)
-public class TestVideogameController {
+public class VideogameControllerTest {
 	
 	private MockMvc mvc;
 	

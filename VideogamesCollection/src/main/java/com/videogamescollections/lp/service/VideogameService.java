@@ -59,10 +59,7 @@ public class VideogameService implements InterfacciaVideogameService {
 	}
 
 
-	@Override
-	public List<Videogame> searchVideogamesByTitle(String query) {
-		return Collections.emptyList();
-	}
+
 
 	@Override
 	public List<Videogame> searchVideogamesBySeries(String query) {
@@ -83,6 +80,12 @@ public class VideogameService implements InterfacciaVideogameService {
 
 	@Override
 	public List<Videogame> getVideogamesBySerie(int id) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Videogame> findByTitoloContaining(String titolo) {
 		// TODO Auto-generated method stub
 		return null;
 	}

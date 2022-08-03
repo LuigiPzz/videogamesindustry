@@ -2,6 +2,7 @@ package com.videogamescollections.lp.model;
 
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -29,9 +30,9 @@ public class Serie implements Serializable {
 	@NotNull
 	private String nome;
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "serie", cascade = CascadeType.ALL)
 	@JsonBackReference
-	private Set<Videogame> videogame = new HashSet<>();
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "serie", cascade = CascadeType.ALL)
+	private List<Videogame> videogames;
 	
 
 	public int getId() {
