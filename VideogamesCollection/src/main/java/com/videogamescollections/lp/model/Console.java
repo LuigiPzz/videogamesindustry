@@ -1,17 +1,24 @@
 package com.videogamescollections.lp.model;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import lombok.EqualsAndHashCode;
 
 @JsonIgnoreProperties({"hibernateLazyInitializer"})
 @Entity
@@ -26,12 +33,29 @@ public class Console implements Serializable {
 	@NotNull
 	private String nome;
 	
-	@OneToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "produttore")
+	@JsonManagedReference
 	@NotNull
 	public Produttore produttore;
 	
 	private int anno;
+	
+	@OneToMany(targetEntity = Videogame.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = false)
+	@JoinColumn(name="console")
+	@JsonManagedReference
+	private List<Videogame> videogames;
+	
+	
+
+	
+	public List<Videogame> getVideogames(){
+		return videogames;
+	}
+	
+	public void setVideogames(List<Videogame> videogames) {
+		this.videogames = videogames;
+	}
 	
 	public int getId() {
 		return id;
